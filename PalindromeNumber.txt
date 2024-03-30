@@ -1,0 +1,29 @@
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        # single digit is true, to speed up analysis
+        if x >= 0 and x < 10:
+            return True
+        # negatives cant be palindromes
+        if x < 0:
+            return False
+        else:
+            original = x
+            reverse = 0
+            
+            # Reverse the integer
+            # go through each digit in a variable
+            while x != 0:
+                # x % 10 will give the last number of the int. (ex: 123 % 10 gives 3)
+                # reverse * 10 moves the int decimal over to add on the modulo. (ex 0 * 10 + 3 = 3)
+                # since we do x // 10 next, the new x value is 12, so 12 % 10 is 2, then 3 * 10 + 2 makes 32.. and so on
+                reverse = reverse * 10 + x % 10
+                # take the current original int and remove the last int (floor division to keep ti as int)
+                x = x // 10
+            
+            return original == reverse
+        
+        
